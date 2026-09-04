@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useEmployeeState  } from './hooks/useEmployeeState';
 import { EmployeeState } from './types/employee';
 import { assertNever } from './lib/assertNever';
+import { cn } from './lib/cn';
 
 // The three routes from product-spec.md, stubbed. You fill them in.
 // Note there is no /availability route — availability is a panel on the
@@ -13,6 +14,7 @@ import { assertNever } from './lib/assertNever';
 
 function EmployeesPage() {
   const [state, dispatch] = useEmployeeState();
+  const isInactive = false;
 
   useEffect(() => {
     const initialEmployee: Employee = {
@@ -66,6 +68,11 @@ function EmployeesPage() {
       <p className="p-card rounded-card bg-brand-500">
         Tailwind is working.
       </p>
+      <article
+        className={`rounded p-4 ${isInactive ? "opacity-60" : ""}`}
+      >
+        Employee
+      </article>
     </div>
   );
 }
