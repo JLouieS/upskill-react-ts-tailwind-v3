@@ -6,7 +6,14 @@
 
    Day 2, Exercise 1 decides which values from product-spec.md belong here.
    Two are seeded so the pipeline is provably working; the rest is your call. */
+
 @theme {
-  --color-brand-500: oklch(0.55 0.21 264);
+  --color-brand-500: #2563eb;
+  --color-status-active: #16a34a;
+  --color-status-inactive: #6b7280;
+  --color-status-on-leave: #d97706;
+  --color-error: #dc2626;
+
   --spacing-card: 1.25rem;
+  --radius-card: 0.5rem;
 }

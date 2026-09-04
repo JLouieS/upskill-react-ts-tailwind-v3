@@ -63,8 +63,7 @@ function EmployeesPage() {
     <div>
       <h1>Employees</h1>
       {renderEmployeeState(state)}
-
-      <p className="p-4">
+      <p className="p-card rounded-card bg-brand-500">
         Tailwind is working.
       </p>
     </div>
