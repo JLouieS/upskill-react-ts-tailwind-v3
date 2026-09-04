@@ -7,6 +7,7 @@ import { useEmployeeState  } from './hooks/useEmployeeState';
 import { EmployeeState } from './types/employee';
 import { assertNever } from './lib/assertNever';
 import { cn } from './lib/cn';
+import { Button } from './components/Button';
 
 // The three routes from product-spec.md, stubbed. You fill them in.
 // Note there is no /availability route — availability is a panel on the
@@ -73,6 +74,14 @@ function EmployeesPage() {
       >
         Employee
       </article>
+      <Button>Default</Button>
+      <Button variant="secondary">
+        Secondary
+      </Button>
+
+      <Button variant="danger" size="lg">
+        Delete
+      </Button>
     </div>
   );
 }
