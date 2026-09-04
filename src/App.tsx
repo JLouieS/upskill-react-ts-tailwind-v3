@@ -64,6 +64,9 @@ function EmployeesPage() {
       <h1>Employees</h1>
       {renderEmployeeState(state)}
 
+      <p className="p-4">
+        Tailwind is working.
+      </p>
     </div>
   );
 }
