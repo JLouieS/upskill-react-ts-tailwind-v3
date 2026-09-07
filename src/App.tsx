@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { useEmployeeState  } from './hooks/useEmployeeState';
 import { EmployeeState } from './types/employee';
 import { assertNever } from './lib/assertNever';
-import { cn } from './lib/cn';
 import { Button } from './components/Button';
 
 // The three routes from product-spec.md, stubbed. You fill them in.
@@ -76,7 +75,7 @@ function EmployeesPage() {
         Secondary
       </Button>
 
-      <Button variant="danger" size="lg">
+      <Button variant="danger">
         Delete
       </Button>
     </div>
