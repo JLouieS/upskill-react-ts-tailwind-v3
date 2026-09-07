@@ -15,6 +15,11 @@ const jane: Employee = {
   status: "active",
 };
 
+const inactiveEmployee: Employee = {
+  ...jane,
+  status: 'inactive',
+};
+
 describe("EmployeeCard", () => {
   it("renders the employee name", () => {
     render(<EmployeeCard employee={jane} onSelect={vi.fn()} />);
@@ -27,6 +32,12 @@ describe("EmployeeCard", () => {
 
     expect(screen.getByText("Status: Active")).toBeInTheDocument();
   });
+
+  it("renders the inactive status label", () => {
+    render(<EmployeeCard employee={inactiveEmployee} onSelect={vi.fn()} />);
+
+    expect(screen.getByText("Status: Inactive")).toBeInTheDocument();
+  })
 
   it("calls onSelect with the employee id when the button is clicked", async () => {
     const onSelect = vi.fn();
