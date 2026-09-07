@@ -17,21 +17,21 @@ const STATUS_CLASSES = {
 export function EmployeeCard({ employee, onSelect }: EmployeeCardProps) {
   return (
     <div className="rounded-card border p-card m-4">
-        <h2>{employee.name}</h2>
-        <p>{employee.email}</p>
-        <p>{employee.department}</p>
-        <p
-          className={cn(
-            'font-medium',
-            STATUS_CLASSES[employee.status]
-          )}
-        >
-          Status: {STATUS_LABELS[employee.status]}
-        </p>
+      <h2>{employee.name}</h2>
+      <p>{employee.email}</p>
+      <p>{employee.department}</p>
+      <p
+        className={cn(
+          'font-medium',
+          STATUS_CLASSES[employee.status]
+        )}
+      >
+        Status: {STATUS_LABELS[employee.status]}
+      </p>
 
-        <Button className="mt-4" onClick={() => onSelect(employee.id)}>
-          View Employee
-        </Button>
+      <Button className="mt-4" onClick={() => onSelect(employee.id)}>
+        View Employee
+      </Button>
     </div>
   )
 }
