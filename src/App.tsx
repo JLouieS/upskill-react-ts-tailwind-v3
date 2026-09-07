@@ -63,12 +63,9 @@ function EmployeesPage() {
   }
 
   return (
-    <div>
+    <div className="dark min-h-screen bg-page text-page-text">
       <h1>Employees</h1>
       {renderEmployeeState(state)}
-      <p className="p-card rounded-card bg-brand-500">
-        Tailwind is working.
-      </p>
       <article
         className={`rounded p-4 ${isInactive ? "opacity-60" : ""}`}
       >
