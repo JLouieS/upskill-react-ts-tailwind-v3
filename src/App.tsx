@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useEmployeeState  } from './hooks/useEmployeeState';
 import { EmployeeState } from './types/employee';
 import { assertNever } from './lib/assertNever';
+import { Button } from './components/Button';
 
 // The three routes from product-spec.md, stubbed. You fill them in.
 // Note there is no /availability route — availability is a panel on the
@@ -13,6 +14,7 @@ import { assertNever } from './lib/assertNever';
 
 function EmployeesPage() {
   const [state, dispatch] = useEmployeeState();
+  const isInactive = false;
 
   useEffect(() => {
     const initialEmployee: Employee = {
@@ -60,10 +62,22 @@ function EmployeesPage() {
   }
 
   return (
-    <div>
+    <div className="dark min-h-screen bg-page text-page-text">
       <h1>Employees</h1>
       {renderEmployeeState(state)}
+      <article
+        className={`rounded p-4 ${isInactive ? "opacity-60" : ""}`}
+      >
+        Employee
+      </article>
+      <Button>Default</Button>
+      <Button variant="secondary">
+        Secondary
+      </Button>
 
+      <Button variant="danger">
+        Delete
+      </Button>
     </div>
   );
 }
