@@ -3,8 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { EmployeeCard } from "./EmployeeCard";
-import type { Employee } from "../types/employee";
-import { toEmployeeId } from '../types/employee';
+import { toEmployeeId, type Employee } from '../types/employee';
 
 // A fixture. Every test starts from a known employee rather than
 // constructing one inline, so a schema change is one edit, not twelve.
@@ -19,6 +18,11 @@ const employee: Employee = {
 const inactiveEmployee: Employee = {
   ...employee,
   status: 'inactive',
+};
+
+const onLeaveEmployee: Employee = {
+  ...employee,
+  status: 'on-leave'
 };
 
 describe("EmployeeCard", () => {
@@ -38,6 +42,27 @@ describe("EmployeeCard", () => {
     render(<EmployeeCard employee={inactiveEmployee} onSelect={vi.fn()} />);
 
     expect(screen.getByText("Status: Inactive")).toBeInTheDocument();
+  })
+
+  it("renders the on-leave status label", () => {
+    render(<EmployeeCard employee={onLeaveEmployee} onSelect={vi.fn()} />);
+
+    expect(screen.getByText("Status: On Leave")).toBeInTheDocument();
+  })
+
+  it.each([
+    ['active', "Status: Active"],
+    ['inactive', "Status: Inactive"],
+    ['on-leave', "Status: On Leave"]
+  ] as const) ("renders the correct status for %s", (status, expectedLabel) => {
+    const testEmployee: Employee = {
+      ...employee,
+      status
+    };
+
+    render (<EmployeeCard employee={testEmployee} onSelect={vi.fn()} />);
+    
+    expect(screen.getByText(expectedLabel)).toBeInTheDocument();
   })
 
   it("calls onSelect with the employee id when the button is clicked", async () => {
