@@ -53,4 +53,17 @@ describe("EmployeeCard", () => {
     expect(onSelect).toHaveBeenCalledWith(employee.id);
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
+
+  it('calls onSelect when the button is activated with the keyboard', async () => {
+    const onSelect = vi.fn();
+    const user = userEvent.setup();
+
+    render(<EmployeeCard employee={employee} onSelect={onSelect} />);
+
+    await user.tab();
+    await user.keyboard('{Enter}');
+
+    expect(onSelect).toHaveBeenCalledWith(employee.id);
+    expect(onSelect).toHaveBeenCalledTimes(1);
+  });
 });
