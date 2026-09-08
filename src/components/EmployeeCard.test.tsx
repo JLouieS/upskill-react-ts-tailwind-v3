@@ -91,4 +91,10 @@ describe("EmployeeCard", () => {
     expect(onSelect).toHaveBeenCalledWith(employee.id);
     expect(onSelect).toHaveBeenCalledTimes(1);
   });
+
+  it('does not render employee error message', () => {
+    render(<EmployeeCard employee={employee} onSelect={vi.fn()} />);
+
+    expect(screen.queryByText('Employee not found')).not.toBeInTheDocument();
+  });
 });
