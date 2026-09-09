@@ -14,21 +14,8 @@ import { describe, expect, it, vi } from "vitest";
 import { EmployeeCard, jane } from "./EmployeeCard";
 
 describe("EmployeeCard — bug 4", () => {
-  it("renders without crashing", () => {
-    render(<EmployeeCard employee={jane} onSelect={vi.fn()} />);
-    expect(true).toBe(true);
-  });
-
   it("has a status", () => {
     render(<EmployeeCard employee={jane} onSelect={vi.fn()} />);
-    const status = screen.queryByText(/status/i);
-    expect(status).toBeDefined();
-  });
-
-  it("passes the correct props", () => {
-    const onSelect = vi.fn();
-    render(<EmployeeCard employee={jane} onSelect={onSelect} />);
-    expect(typeof onSelect).toBe("function");
-    expect(jane.status).toBe("active");
+    expect(screen.getByText(/status: active/i)).toBeInTheDocument();
   });
 });

@@ -18,13 +18,13 @@ import { describe, expect, it, vi } from "vitest";
 import { EmployeeCard, jane } from "./EmployeeCard";
 
 describe("EmployeeCard — bug 1", () => {
-  it("calls onSelect with the employee id when the button is clicked", () => {
+  it("calls onSelect with the employee id when the button is clicked", async () => {
     const onSelect = vi.fn();
     const user = userEvent.setup();
 
     render(<EmployeeCard employee={jane} onSelect={onSelect} />);
 
-    user.click(screen.getByRole("button", { name: /view employee/i }));
+    await user.click(screen.getByRole("button", { name: /view employee/i }));
 
     expect(onSelect).toHaveBeenCalledWith(jane.id);
   });

@@ -12,18 +12,16 @@
 //   3. Write one sentence in your PR explaining what the original test was
 //      actually asserting.
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { EmployeeCard, jane } from "./EmployeeCard";
 
 describe("EmployeeCard — bug 3", () => {
   it("renders a view button", () => {
-    const { container } = render(
+    render(
       <EmployeeCard employee={jane} onSelect={vi.fn()} />,
     );
 
-    const button = container.querySelector(".view-button");
-
-    expect(button).not.toBeNull();
+    expect(screen.getByRole("button", { name: /view employee/i })).toBeInTheDocument();
   });
 });

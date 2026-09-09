@@ -11,9 +11,9 @@ import { describe, expect, it, vi } from "vitest";
 import { AsyncEmployeeCard, jane } from "./EmployeeCard";
 
 describe("AsyncEmployeeCard — bug 2", () => {
-  it("shows the employee once loading finishes", () => {
+  it("shows the employee once loading finishes", async () => {
     render(<AsyncEmployeeCard employee={jane} onSelect={vi.fn()} />);
 
-    expect(screen.getByText("Jane Doe")).toBeInTheDocument();
+    expect(await screen.findByText("Jane Doe")).toBeInTheDocument();
   });
 });
