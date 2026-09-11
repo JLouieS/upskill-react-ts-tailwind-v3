@@ -8,6 +8,7 @@ import { EmployeeState } from './types/employee';
 import { assertNever } from './lib/assertNever';
 import { Button } from './components/Button';
 import { EmployeeLoader } from './components/EmployeeLoader';
+import { ShiftForm } from './components/ShiftForm';
 // The three routes from product-spec.md, stubbed. You fill them in.
 // Note there is no /availability route — availability is a panel on the
 // employee detail page. Day 5 explains why that distinction matters.
@@ -79,6 +80,9 @@ function EmployeesPage() {
         Delete
       </Button>
       < EmployeeLoader />
+      <ShiftForm  onSubmit={async (request) => {
+        console.log(request);
+      }}/>
     </div>
   );
 }
