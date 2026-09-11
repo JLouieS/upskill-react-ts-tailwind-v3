@@ -157,4 +157,103 @@ describe("ShiftForm", () => {
     expect(endTime).toHaveValue("17:00");
     expect(onSubmit).toHaveBeenCalled();
   });
+
+  it("shows the API error when shift creation fails", async () => {
+    const user = userEvent.setup();
+
+    const onSubmit = vi.fn().mockRejectedValue({
+      code: "SHIFT_IN_PAST",
+      message: "That date is in the past.",
+    });
+
+    render(<ShiftForm onSubmit={onSubmit} />);
+
+    await user.type(screen.getByLabelText("Date"), "2026-10-01");
+    await user.type(screen.getByLabelText("Start time"), "09:00");
+    await user.type(screen.getByLabelText("End time"), "17:00");
+
+    await user.click(screen.getByRole("button", { name: "Create" }));
+
+    expect(
+      await screen.findByText("That date is in the past."),
+    ).toBeInTheDocument();
+
+    expect(screen.getByLabelText("Date")).toHaveFocus();
+    expect(onSubmit).toHaveBeenCalled();
+  });
+
+  it("shows a generic message for an unknown API error", async () => {
+    const user = userEvent.setup();
+
+    const onSubmit = vi.fn().mockRejectedValue({
+      code: "TEAPOT_UNAVAILABLE",
+      message: "Unrecognised.",
+    });
+
+    render(<ShiftForm onSubmit={onSubmit} />);
+
+    await user.type(screen.getByLabelText("Date"), "2026-10-01");
+    await user.type(screen.getByLabelText("Start time"), "09:00");
+    await user.type(screen.getByLabelText("End time"), "17:00");
+
+    await user.click(screen.getByRole("button", { name: "Create" }));
+
+    expect(
+      await screen.findByText("Something went wrong. Please try again."),
+    ).toBeInTheDocument();
+  });
+});
+
+it("shows the conflicting shift for a SHIFT_OVERLAP error", async () => {
+  const user = userEvent.setup();
+
+  const onSubmit = vi.fn().mockRejectedValue({
+    code: "SHIFT_OVERLAP",
+    message: "This shift overlaps with another shift.",
+    conflictingShiftId: 123,
+  });
+
+  render(<ShiftForm onSubmit={onSubmit} />);
+
+  await user.type(screen.getByLabelText("Date"), "2026-10-01");
+  await user.type(screen.getByLabelText("Start time"), "09:00");
+  await user.type(screen.getByLabelText("End time"), "17:00");
+
+  await user.click(screen.getByRole("button", { name: "Create" }));
+
+  expect(
+    await screen.findByText(/shift.*123/i),
+  ).toBeInTheDocument();
+});
+
+it("shows a generic message and logs VALIDATION_FAILED", async () => {
+  const user = userEvent.setup();
+  const consoleError = vi
+    .spyOn(console, "error")
+    .mockImplementation(() => {});
+
+  const error = {
+    code: "VALIDATION_FAILED",
+    message: "End time must be after start time.",
+  };
+
+  const onSubmit = vi.fn().mockRejectedValue(error);
+
+  render(<ShiftForm onSubmit={onSubmit} />);
+
+  await user.type(screen.getByLabelText("Date"), "2026-10-01");
+  await user.type(screen.getByLabelText("Start time"), "09:00");
+  await user.type(screen.getByLabelText("End time"), "17:00");
+
+  await user.click(screen.getByRole("button", { name: "Create" }));
+
+  expect(
+    await screen.findByText("Something went wrong. Please try again."),
+  ).toBeInTheDocument();
+
+  expect(screen.queryByText(error.message)).not.toBeInTheDocument();
+
+  expect(consoleError).toHaveBeenCalledWith(error);
+
+  consoleError.mockRestore();
 });
