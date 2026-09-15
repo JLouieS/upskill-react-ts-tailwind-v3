@@ -1,5 +1,5 @@
-import type { EmployeeId, IsoDate } from './employee';
-import type { IsoTime, Brand } from './brand';
+import type { EmployeeId, IsoDate } from '../../employee/model/employee.types';
+import type { IsoTime, Brand } from '../../../shared/lib/brand';
 
 export type ShiftId = Brand<number, 'ShiftId'>;
 

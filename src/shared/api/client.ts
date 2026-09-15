@@ -1,13 +1,15 @@
-import { EmployeeListResponseDto, ShiftDto, ApiErrorDto } from './schemas';
+import { ShiftDto } from '../../entities/shift/model/shift.schemas';
+import { EmployeeListResponseDto } from '../../entities/employee/model/employee.schemas';
 import { z } from "zod";
-import type { Employee } from '../types/employee';
-import { toEmployeeId, toIsoDate } from "../types/employee";
-import { toShiftId } from '../types/shift';
-import { toIsoTime } from '../types/brand';
-import type { Shift, CreateShiftRequest } from '../types/shift';
+import type { Employee } from '../../entities/employee/model/employee.types';
+import { toEmployeeId, toIsoDate } from "../../entities/employee/model/employee.types";
+import { toShiftId } from '../../entities/shift/model/shift.types';
+import { toIsoTime } from '../lib/brand';
+import type { Shift, CreateShiftRequest } from '../../entities/shift/model/shift.types';
+import type { ShiftDtoType } from '../../entities/shift/model/shift.schemas';
+import { ApiErrorDto } from '../../entities/shift/model/shift.schemas';
 
 export type EmployeeDto = z.infer<typeof EmployeeListResponseDto>["employees"][number];
-export type ShiftDtoType = z.infer<typeof ShiftDto>;
 
 export function toEmployee(dto: EmployeeDto): Employee {
   return {

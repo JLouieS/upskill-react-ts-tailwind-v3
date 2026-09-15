@@ -1,14 +1,14 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { EmployeeCard } from './components/EmployeeCard';
-import type { EmployeeId } from './types/employee';
-import { toEmployeeId, type Employee } from "./types/employee";
+import { EmployeeCard } from '../entities/employee/ui/EmployeeCard';
+import type { EmployeeId } from '../entities/employee/model/employee.types';
+import { toEmployeeId, type Employee } from "../entities/employee/model/employee.types";
 import { useEffect } from "react";
-import { useEmployeeState  } from './hooks/useEmployeeState';
-import { EmployeeState } from './types/employee';
-import { assertNever } from './lib/assertNever';
-import { Button } from './components/Button';
-import { EmployeeLoader } from './components/EmployeeLoader';
-import { ShiftForm } from './components/ShiftForm';
+import { useEmployeeState  } from '../hooks/useEmployeeState';
+import { EmployeeState } from '../entities/employee/model/employee.types';
+import { assertNever } from '../lib/assertNever';
+import { Button } from '../components/Button';
+import { EmployeeLoader } from '../components/EmployeeLoader';
+import { ShiftForm } from '../features/shift-assignment/ui/ShiftForm';
 // The three routes from product-spec.md, stubbed. You fill them in.
 // Note there is no /availability route — availability is a panel on the
 // employee detail page. Day 5 explains why that distinction matters.

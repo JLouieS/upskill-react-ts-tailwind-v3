@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useEmployeeState } from '../hooks/useEmployeeState';
-import { toEmployeeId } from '../types/employee';
+import { toEmployeeId } from '../entities/employee/model/employee.types';
 
 
 export function EmployeeLoader() {

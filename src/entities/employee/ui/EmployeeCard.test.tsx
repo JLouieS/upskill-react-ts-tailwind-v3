@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { EmployeeCard } from "./EmployeeCard";
-import { toEmployeeId, type Employee } from '../types/employee';
+import { toEmployeeId, type Employee } from '../model/employee.types';
 
 // A fixture. Every test starts from a known employee rather than
 // constructing one inline, so a schema change is one edit, not twelve.

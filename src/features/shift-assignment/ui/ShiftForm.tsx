@@ -1,8 +1,8 @@
 import { useId, useState, useRef } from "react";
-import type { CreateShiftRequest, ShiftRole } from "../types/shift";
-import { toIsoDate } from '../types/employee';
-import { toIsoTime } from '../types/brand';
-import { isApiError, isKnownError } from "../types/api";
+import type { CreateShiftRequest, ShiftRole } from "../../../entities/shift/model/shift.types";
+import { toIsoDate } from '../../../entities/employee/model/employee.types';
+import { toIsoTime } from '../../../shared/lib/brand';
+import { isApiError, isKnownError } from "../../../types/api";
 
 
 export type ShiftFormProps = {
