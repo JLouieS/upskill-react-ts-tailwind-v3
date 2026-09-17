@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useEmployeeState  } from '../hooks/useEmployeeState';
 import { EmployeeState } from '../entities/employee/model/employee.types';
 import { assertNever } from '../lib/assertNever';
-import { Button } from '../components/Button';
+import { Button } from "@/shared/ui/Button";
 import { EmployeeLoader } from '../components/EmployeeLoader';
 import { ShiftForm } from '../features/shift-assignment/ui/ShiftForm';
 // The three routes from product-spec.md, stubbed. You fill them in.

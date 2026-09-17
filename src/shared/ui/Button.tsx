@@ -1,5 +1,6 @@
-import type { ComponentPropsWithoutRef } from 'react'
-import { cn } from '../shared/lib/cn'
+import type { ComponentPropsWithoutRef } from 'react';
+import { cn } from '../lib/cn';
+
 
 const VARIANTS = {
   primary: "bg-brand-500 text-white hover:bg-brand-600",

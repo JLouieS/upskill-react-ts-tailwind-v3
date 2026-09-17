@@ -1,6 +1,6 @@
 import type { Employee, EmployeeId } from '../model/employee.types';
 import { STATUS_LABELS } from '../model/employee.types';
-import { Button } from '../../../components//Button';
+import { Button } from '@/shared/ui/Button';
 import { cn } from '../../../shared/lib/cn';
 
 export type EmployeeCardProps = {
