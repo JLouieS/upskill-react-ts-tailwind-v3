@@ -1,0 +1,3 @@
+# UI Primitive Decisions
+
+We chose a small set of variants and sizes for the UI primitives to keep them predictable and avoid unnecessary customization. `Button` supports `primary`, `secondary`, and `danger` variants with `sm` and `md` sizes, while `Input` has no variants and supports `sm` and `md`; `Dialog` has no variants or size options. We rejected adding variants for every possible visual or validation state because those can be handled by composition or caller-provided `className` when needed. Styling uses shared `@theme` tokens, and `className` overrides are supported through `cn()` so callers can customize a primitive without introducing Tailwind class conflicts.

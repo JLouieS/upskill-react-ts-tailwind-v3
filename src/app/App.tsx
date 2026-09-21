@@ -71,8 +71,8 @@ function EmployeesPage() {
       >
         Employee
       </article>
-      <Button>Default</Button>
-      <Button variant="secondary">
+      <Button size="sm">Default</Button>
+      <Button size="md" variant="secondary">
         Secondary
       </Button>
 
