@@ -17,18 +17,18 @@ export default tseslint.config(
       // Day 1 onward: `any` is the thing the curriculum is trying to remove.
       "@typescript-eslint/no-explicit-any": "error",
 
-      /* ------------------------------------------------------------------
-         Day 5 adds the architecture rule here. It is commented out until
-         then, because on Day 1 there are no features to protect and a rule
-         that fires on nothing teaches nothing.
+
+        //  Day 5 adds the architecture rule here. It is commented out until
+        //  then, because on Day 1 there are no features to protect and a rule
+        //  that fires on nothing teaches nothing.
 
       "no-restricted-imports": ["error", {
         patterns: [{
-          group: ["@/features/*"],
+          group: ["@/features/*", "@/features/**"],
           message: "entities and shared must not import features",
         }],
       }],
-      ------------------------------------------------------------------ */
+
     },
   },
 );
