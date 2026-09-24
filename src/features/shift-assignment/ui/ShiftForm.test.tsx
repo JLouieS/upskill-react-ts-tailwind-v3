@@ -46,6 +46,10 @@ describe("ShiftForm", () => {
     expect(
       screen.getByText("End time must be after start time."),
     ).toBeInTheDocument();
+    expect(screen.getByLabelText("End time")).toHaveAttribute(
+      "aria-invalid",
+      "true",
+    );
   });
 
   it("shows an error when the date is in the past", async () => {
