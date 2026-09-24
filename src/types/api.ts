@@ -1,5 +1,5 @@
-import type { Employee } from './employee';
-import type { ShiftId } from './shift';
+import type { Employee } from '../entities/employee/model/employee.types';
+import type { ShiftId } from '../entities/shift/model/shift.types';
 // src/types/api.ts — provisional. Day 4 replaces this with the
 // contract the backend actually guarantees.
 export type ApiError = {

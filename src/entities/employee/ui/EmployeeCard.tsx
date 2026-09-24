@@ -1,7 +1,7 @@
-import type { Employee, EmployeeId } from '../types/employee';
-import { STATUS_LABELS } from '../types/employee';
-import { Button } from './Button';
-import { cn } from '../lib/cn';
+import type { Employee, EmployeeId } from '../model/employee.types';
+import { STATUS_LABELS } from '../model/employee.types';
+import { Button } from '@/shared/ui/Button';
+import { cn } from '../../../shared/lib/cn';
 
 export type EmployeeCardProps = {
   employee: Employee;

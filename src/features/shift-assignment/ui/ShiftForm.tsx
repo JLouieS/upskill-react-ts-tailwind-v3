@@ -1,8 +1,8 @@
 import { useId, useState, useRef } from "react";
-import type { CreateShiftRequest, ShiftRole } from "../types/shift";
-import { toIsoDate } from '../types/employee';
-import { toIsoTime } from '../types/brand';
-import { isApiError, isKnownError } from "../types/api";
+import type { CreateShiftRequest, ShiftRole } from "../../../entities/shift/model/shift.types";
+import { toIsoDate } from '../../../entities/employee/model/employee.types';
+import { toIsoTime } from '../../../shared/lib/brand';
+import { isApiError, isKnownError } from "../../../types/api";
 
 
 export type ShiftFormProps = {
@@ -65,7 +65,6 @@ export function ShiftForm({ onSubmit }: ShiftFormProps) {
     setErrors({});
     setIsSubmitting(true);
     setSubmitError(undefined);
-    setIsSubmitting(true);
     try {
       await onSubmit({
         date: toIsoDate(date),
@@ -111,6 +110,7 @@ export function ShiftForm({ onSubmit }: ShiftFormProps) {
         type="date"
         value={date}
         onChange={(event) => setDate(event.target.value)}
+        aria-invalid={!!errors.date}
         aria-describedby={`${dateId}-error`}
       />
 
@@ -126,6 +126,7 @@ export function ShiftForm({ onSubmit }: ShiftFormProps) {
         type="time"
         value={startTime}
         onChange={(event) => setStartTime(event.target.value)}
+        aria-invalid={!!errors.startTime}
         aria-describedby={`${startId}-error`}
       />
 
@@ -141,6 +142,7 @@ export function ShiftForm({ onSubmit }: ShiftFormProps) {
         type="time"
         value={endTime}
         onChange={(event) => setEndTime(event.target.value)}
+        aria-invalid={!!errors.endTime}
         aria-describedby={`${endId}-error`}
       />
 

@@ -1,4 +1,4 @@
-import type { EmployeeId } from "../types/employee";
+import type { EmployeeId } from "../../entities/employee/model/employee.types";
 
 export function indexById<T extends { id: EmployeeId }>(
   items: readonly T[],

@@ -1,5 +1,6 @@
-import type { ComponentPropsWithoutRef } from 'react'
-import { cn } from '../lib/cn'
+import type { ComponentPropsWithoutRef } from 'react';
+import { cn } from '../lib/cn';
+
 
 const VARIANTS = {
   primary: "bg-brand-500 text-white hover:bg-brand-600",
@@ -7,13 +8,20 @@ const VARIANTS = {
   danger: "bg-red-600 text-white hover:bg-red-700",
 } satisfies Record<string, string>;
 
+const SIZES = {
+  sm: 'px-3 py-1.5 text-sm',
+  md: 'px-4 py-2',
+} satisfies Record<string, string>;
+
 type ButtonProps =
   ComponentPropsWithoutRef<'button'> & {
-    variant?: keyof typeof VARIANTS
+    variant?: keyof typeof VARIANTS;
+    size?: keyof typeof SIZES;
   }
 
 export function Button({
   variant = 'primary',
+  size = 'sm',
   className,
   ...props
 }: ButtonProps) {
@@ -22,6 +30,7 @@ export function Button({
       {...props}
       className={cn(
         'rounded-card font-medium px-4 py-2',
+        SIZES[size],
         VARIANTS[variant],
         className
       )}

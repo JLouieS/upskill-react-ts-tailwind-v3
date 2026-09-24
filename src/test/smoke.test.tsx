@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { screen } from "@testing-library/react";
-import { App } from "../App";
+import { App } from "../app/App";
 import { renderWithProviders } from "./utils";
 
 describe("starter harness", () => {

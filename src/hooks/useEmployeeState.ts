@@ -1,7 +1,7 @@
 import type {
   EmployeeAction,
   EmployeeState,
-} from "../types/employee";
+} from "../entities/employee/model/employee.types";
 import { assertNever } from '../lib/assertNever';
 import { useReducer } from "react";
 

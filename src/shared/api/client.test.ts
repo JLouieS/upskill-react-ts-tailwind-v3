@@ -1,10 +1,10 @@
-import { failures } from '../mocks/handlers';
-import { server } from '../mocks/server';
+import { failures } from '../../mocks/handlers';
+import { server } from '../../mocks/server';
 import { createShift, getEmployees } from "./client";
-import { toIsoDate } from "../types/employee";
-import { toIsoTime } from '../types/brand';
-import type { ApiError } from "../types/api";
-import { isKnownError, isApiError } from "../types/api";
+import { toIsoDate } from "../../entities/employee/model/employee.types";
+import { toIsoTime } from '../lib/brand';
+import type { ApiError } from "../../types/api";
+import { isKnownError, isApiError } from "../../types/api";
 
 it("rejects malformed employee responses", async () => {
   server.use(failures.employeesMalformed);

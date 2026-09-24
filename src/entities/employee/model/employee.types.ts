@@ -1,5 +1,5 @@
-import type { Brand } from './brand';
-import type { ApiError } from "./api";
+import type { Brand } from '../../../shared/lib/brand';
+import type { ApiError } from "../../../types/api";
 // import { expectTypeOf } from "vitest";
 
 export type EmployeeStatus = "active" | "inactive" | "on-leave";
